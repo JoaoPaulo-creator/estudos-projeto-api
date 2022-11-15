@@ -1,3 +1,5 @@
+
+import path from 'node:path'
 import express from 'express'
 import mongoose from 'mongoose'
 import { router } from './routes'
@@ -14,6 +16,13 @@ mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PWD}@ecommercecrudapi.cxzqozi.mo
         console.log('👍 Conectado com sucesso ao banco de dados')
 		const app = express()
 		const PORT = 3001
+
+        /*
+         * quando o usuário acessar a rota /uploads, então a imagem cadastrada deverá ser retornada para ele
+         * de forma estática
+        */
+
+        app.use('/uploads', express.static(path.resolve(__dirname, '..', 'uploads')))
         app.use(express.json())
         app.use(router)
 

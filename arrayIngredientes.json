@@ -1,0 +1,9 @@
+
+// pizza
+
+[{"name":"Mussarela","icon":"🧀"},{"name":"Parmesão","icon":"🧀"},{"name":"Gouda","icon":"🧀"},{"name":"Brie","icon":"🧀"}]
+
+// hamburguer
+
+
+[{"name":"Pao_brioche","icon":"🍞"},{"name":"mussarela","icon":"🧀"},{"name":"Carne_de_costela","icon":"🥩"},{"name":"molho_da_casa","icon":"🍅"}]
