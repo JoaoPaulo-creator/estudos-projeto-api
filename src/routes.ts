@@ -9,6 +9,10 @@ import { updateCaregory } from './useCases/categories/updateCategory'
 import { createProduct } from './useCases/products/createProducts'
 import { listProducts } from './useCases/products/listProducts'
 import { listProductsByCategory } from './useCases/categories/listCateogyByProduct'
+import { listOrders } from './useCases/orders/listOrders'
+import { createOrder } from './useCases/orders/createOrder'
+import { changeOrderStatus } from './useCases/orders/changeOrderStatus'
+import { cancelOrder } from './useCases/orders/cancelOrder'
 
 // middlware utilizado para salvar uma imagem em disco
 // Este será utiliado no endpoint de cadastro de produtos, onde será necessário salvar imagens
@@ -33,23 +37,14 @@ router.post('/categories', createCaregory)
 
 router.get('/categories/:categoryId/products', listProductsByCategory)
 
-
+//categorias
 
 router.get('/products', listProducts)
 router.post('/products', upload.single('image'), createProduct)
 
-router.get('/orders', (req, res) => {
-    return res.status(201).json({message: 'Ola, mundo'})
-})
+router.get('/orders', listOrders)
+router.post('/orders', createOrder)
 
-router.post('/orders', (req, res) => {
-    return res.status(201).json({message: 'Ola, mundo'})
-})
+router.patch('/orders/:orderId', changeOrderStatus)
 
-router.patch('/orders/:oderdId', (req, res) => {
-    return res.status(201).json({message: 'Ola, mundo'})
-})
-
-router.delete('/orders/:oderdId', (req, res) => {
-    return res.status(201).json({message: 'Ola, mundo'})
-})
+router.delete('/orders/:orderId', cancelOrder)

@@ -1,6 +1,6 @@
 import {model, Schema} from 'mongoose'
 
-export const Order = model('Order', new Schema({
+export const Orders = model('Orders', new Schema({
 	table: {
 		type: String,
 		required: true
@@ -19,14 +19,15 @@ export const Order = model('Order', new Schema({
     products: {
         required: true,
         type: [{
-            product: Schema.Types.ObjectId,
-            required: true,
-            ref: 'Product'
+            product: {
+                type: Schema.Types.ObjectId,
+                required: true,
+                ref: 'Product'
+            },
+            quantity: {
+                type: Number,
+                default: 1
+            }
         }]
-    },
-    quantity: {
-        type: Number,
-        default: 1
     }
-
 }))
