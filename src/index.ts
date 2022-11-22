@@ -17,6 +17,16 @@ mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PWD}@ecommercecrudapi.cxzqozi.mo
 		const app = express()
 		const PORT = 3001
 
+        // configurando o cors
+
+        app.use((req, res, next) => {
+            res.setHeader('Access-Control-Allow-Origin', '*')
+            res.setHeader('Access-Control-Allow-Methods', '*')
+            res.setHeader('Access-Control-Allow-Headers', '*')
+
+            next()
+        })
+
         /*
          * quando o usuário acessar a rota /uploads, então a imagem cadastrada deverá ser retornada para ele
          * de forma estática
