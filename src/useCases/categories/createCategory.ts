@@ -1,15 +1,19 @@
-import { Request, Response } from "express";
+
 import { Category } from "../../models/Category";
 
-export async function createCaregory(req: Request, res: Response) {
-    try {
+interface BodyRequestProps {
+    icon: string
+    name: any
+}
 
-        const {icon, name} = req.body
-        const createCategory = await Category.create({ icon, name })
-        return res.json(createCategory)
+export async function createCaregory(request: BodyRequestProps) {
+    try {
+        const { icon, name } = request
+        const category = await Category.create({ icon, name })
+        return { category }
 
     } catch (error) {
         console.error(error)
-        return res.status(500).json({ error: 'Erro ao tentar cadastrar categoria'})
+        return { error: 'Erro ao tentar cadastrar categoria'}
     }
 }
